@@ -1,13 +1,12 @@
 package pe.edu.upc.easyvet.data
 
-import pe.edu.upc.easyvet.domain.ProductsResponse
 import retrofit2.Response
 import retrofit2.http.GET
 
 interface ProductService {
 
     @GET("products")
-    suspend fun getProducts(): Response<ProductsResponse>
+    suspend fun getProducts(): Response<ProductsDto>
 
 
 }

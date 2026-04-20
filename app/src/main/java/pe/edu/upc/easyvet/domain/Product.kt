@@ -7,7 +7,3 @@ data class Product(
     val description: String,
     val image: String
 )
-
-data class ProductsResponse(
-    val products: List<Product>
-)
