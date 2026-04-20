@@ -23,7 +23,10 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             AppTheme {
-                ProductList(viewModel)
+                Scaffold { paddingValues ->
+                    ProductList(viewModel, modifier = Modifier.padding(paddingValues))
+
+                }
             }
         }
     }

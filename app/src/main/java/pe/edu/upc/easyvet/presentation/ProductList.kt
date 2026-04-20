@@ -10,16 +10,16 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 
 @Composable
-fun ProductList(viewModel: ProductListViewModel){
+fun ProductList(viewModel: ProductListViewModel, modifier: Modifier){
 
     val products = viewModel.products.collectAsState()
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize()
     ) {
         LazyColumn {
             items(products.value){ product ->
-                Text(product.title)
+                ProductCard(product)
             }
         }
 
