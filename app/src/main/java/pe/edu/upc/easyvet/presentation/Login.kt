@@ -1,0 +1,135 @@
+package pe.edu.upc.easyvet.presentation
+
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import pe.edu.upc.easyvet.R
+import pe.edu.upc.easyvet.presentation.theme.AppTheme
+
+@Composable
+fun Login(modifier: Modifier = Modifier) {
+
+    val email = remember {
+        mutableStateOf("")
+    }
+
+    val password = remember {
+        mutableStateOf("")
+    }
+
+    val isVisible = remember {
+        mutableStateOf(false)
+    }
+
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center
+    ) {
+
+
+        Image(
+            painter = painterResource(
+                id = R.drawable.background
+            ), contentDescription = null,
+            modifier = Modifier
+                .height(256.dp)
+                .fillMaxWidth(),
+            contentScale = ContentScale.Fit
+
+        )
+
+        OutlinedTextField(
+            value = email.value,
+            onValueChange = {
+                email.value = it
+            },
+            placeholder = {
+                Text("Email")
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+
+        )
+
+        OutlinedTextField(
+            value = password.value,
+            onValueChange = {
+                password.value = it
+            },
+            placeholder = {
+                Text("Password")
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
+            visualTransformation =
+
+                if (isVisible.value) {
+                    VisualTransformation.None
+                } else {
+                    PasswordVisualTransformation()
+                },
+            trailingIcon = {
+                IconButton(
+                    onClick = {
+                        isVisible.value = !isVisible.value
+                    }
+                ) {
+                    Icon(
+                        painter = painterResource(
+                            if (isVisible.value) {
+                                R.drawable.visibility
+                            } else {
+                                R.drawable.visibility_off
+                            }
+                        ),
+                        contentDescription = null
+                    )
+                }
+
+            }
+
+        )
+
+        Button(
+            onClick = {},
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp)
+        ) {
+            Text("Login")
+        }
+
+    }
+
+
+}
+
+
+@Preview
+@Composable
+fun LoginPreview() {
+    AppTheme {
+        Login()
+    }
+}
