@@ -21,4 +21,8 @@ class ProductListViewModel(
 
     }
 
+    init {
+        getProducts()
+    }
+
 }
