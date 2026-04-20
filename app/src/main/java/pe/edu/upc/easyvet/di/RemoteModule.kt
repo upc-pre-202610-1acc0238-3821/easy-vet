@@ -6,9 +6,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RemoteModule {
 
-    fun provideRetrofit(): Retrofit {
+    fun provideBaseUrl(): String {
+        return "https://petapi-591531460223.us-central1.run.app/api/"
+    }
+
+    fun provideRetrofit(url: String = provideBaseUrl()): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://petapi-591531460223.us-central1.run.app/api/")
+            .baseUrl(url)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
@@ -16,7 +20,6 @@ object RemoteModule {
 
     fun provideProductService(retrofit: Retrofit = provideRetrofit()): ProductService {
         return retrofit.create(ProductService::class.java)
-
     }
 
 }
