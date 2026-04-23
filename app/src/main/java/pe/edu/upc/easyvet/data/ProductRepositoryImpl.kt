@@ -15,7 +15,7 @@ class ProductRepositoryImpl(
                 return productsDto.products.map { productDto ->
                     Product(
                         id = productDto.id,
-                        title = productDto.title,
+                        name = productDto.title,
                         price = productDto.price,
                         description = productDto.description,
                         image = productDto.image
