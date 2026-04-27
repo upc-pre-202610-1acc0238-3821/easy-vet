@@ -60,8 +60,8 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
 
     // Coil
-    implementation(libs.coil.compose)
-    implementation(libs.coil.network.okhttp)
+    implementation(libs.coil)
+    implementation(libs.coil.network)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
