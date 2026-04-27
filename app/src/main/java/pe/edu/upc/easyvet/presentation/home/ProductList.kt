@@ -11,9 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import pe.edu.upc.easyvet.domain.model.Product
 
 @Composable
-fun ProductList(viewModel: ProductListViewModel, modifier: Modifier = Modifier) {
+fun ProductList(
+    viewModel: ProductListViewModel,
+    modifier: Modifier = Modifier,
+    onProductClick: (Product) -> Unit
+) {
 
     val state = viewModel.state.collectAsState().value
 
@@ -29,7 +34,9 @@ fun ProductList(viewModel: ProductListViewModel, modifier: Modifier = Modifier) 
             else ->
                 LazyColumn {
                     items(state.products) { product ->
-                        ProductItem(product)
+                        ProductItem(product) {
+                            onProductClick(product)
+                        }
                     }
                 }
         }
