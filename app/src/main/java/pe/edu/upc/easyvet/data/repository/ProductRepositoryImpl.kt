@@ -1,7 +1,8 @@
-package pe.edu.upc.easyvet.data
+package pe.edu.upc.easyvet.data.repository
 
-import pe.edu.upc.easyvet.domain.Product
-import pe.edu.upc.easyvet.domain.ProductRepository
+import pe.edu.upc.easyvet.data.remote.ProductService
+import pe.edu.upc.easyvet.domain.model.Product
+import pe.edu.upc.easyvet.domain.repository.ProductRepository
 
 class ProductRepositoryImpl(
     val productService: ProductService

@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.presentation
+package pe.edu.upc.easyvet.presentation.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.presentation
+package pe.edu.upc.easyvet.presentation.home
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import pe.edu.upc.easyvet.domain.Product
+import pe.edu.upc.easyvet.domain.model.Product
 
 @Composable
 fun ProductItem(product: Product) {

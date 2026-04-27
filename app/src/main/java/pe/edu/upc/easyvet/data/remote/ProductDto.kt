@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.data
+package pe.edu.upc.easyvet.data.remote
 
 import com.google.gson.annotations.SerializedName
 

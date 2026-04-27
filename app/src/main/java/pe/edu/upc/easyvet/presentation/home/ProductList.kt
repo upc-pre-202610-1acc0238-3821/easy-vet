@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.presentation
+package pe.edu.upc.easyvet.presentation.home
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

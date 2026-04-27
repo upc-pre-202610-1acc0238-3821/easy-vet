@@ -1,4 +1,4 @@
-package pe.edu.upc.easyvet.presentation
+package pe.edu.upc.easyvet.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import pe.edu.upc.easyvet.domain.Product
-import pe.edu.upc.easyvet.domain.ProductRepository
+import pe.edu.upc.easyvet.domain.repository.ProductRepository
+import pe.edu.upc.easyvet.presentation.home.UiState
 
 class ProductListViewModel(
     private val productRepository: ProductRepository

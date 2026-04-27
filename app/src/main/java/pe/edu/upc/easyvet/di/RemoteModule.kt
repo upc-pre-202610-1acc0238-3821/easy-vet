@@ -1,6 +1,6 @@
 package pe.edu.upc.easyvet.di
 
-import pe.edu.upc.easyvet.data.ProductService
+import pe.edu.upc.easyvet.data.remote.ProductService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
