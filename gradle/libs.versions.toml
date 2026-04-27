@@ -15,6 +15,7 @@ lifecycleViewmodelCompose = "2.10.0"
 lifecycleViewmodelKtx = "2.10.0"
 coil = "3.4.0"
 navigationCompose = "2.9.8"
+kotlinSerializationJson = "1.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,10 +40,12 @@ androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifec
 coil = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil"}
 coil-network = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil"}
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+kotlin-serialization-json =  { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinSerializationJson"}
 
 
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
 
