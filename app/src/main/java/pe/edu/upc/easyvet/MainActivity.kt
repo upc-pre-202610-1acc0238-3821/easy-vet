@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import pe.edu.upc.easyvet.di.RepositoryModule.provideProductRepository
 import pe.edu.upc.easyvet.presentation.home.ProductListViewModel
-import pe.edu.upc.easyvet.presentation.navigation.Navigation
+import pe.edu.upc.easyvet.presentation.navigation.Main
 import pe.edu.upc.easyvet.presentation.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +18,7 @@ class MainActivity : ComponentActivity() {
         )
         setContent {
             AppTheme {
-                Navigation()
+                Main()
             }
         }
     }
