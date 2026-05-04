@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -14,25 +15,36 @@ import pe.edu.upc.easyvet.presentation.home.UiState
 class ProductListViewModel(
     private val productRepository: ProductRepository
 ) : ViewModel() {
-    private var _state = MutableStateFlow(UiState())
-    val state: StateFlow<UiState> get() = _state
+    val state = MutableStateFlow(UiState())
 
-    fun getProducts() {
+    fun observeProducts() {
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                productRepository.getProducts().collect { products ->
+                    state.update {
+                        it.copy(products = products)
+                    }
+                }
+            }
+        }
+    }
 
-        _state.update {
+    fun syncProducts() {
+
+        state.update {
             it.copy(isLoading = true)
         }
 
         viewModelScope.launch {
             try {
-                val products = productRepository.getProducts()
-                _state.update {
-                    it.copy(isLoading = false, products = products)
+                productRepository.syncProducts()
+                state.update {
+                    it.copy(isLoading = false)
                 }
 
             } catch (e: Exception) {
-                _state.update {
-                    it.copy(isLoading = false, errorMessage = e.message)
+                state.update {
+                    it.copy(isLoading = false, errorMessage = e.message ?: "An error occurred")
                 }
             }
         }
@@ -40,7 +52,8 @@ class ProductListViewModel(
     }
 
     init {
-        getProducts()
+        observeProducts()
+        syncProducts()
     }
 
 }
