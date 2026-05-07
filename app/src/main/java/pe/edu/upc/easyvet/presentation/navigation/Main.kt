@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -27,13 +28,18 @@ fun Main() {
     Scaffold(bottomBar = {
         NavigationBar {
             MainTab.entries.forEach { tab ->
+                val selected = selectedTab == tab
                 NavigationBarItem(
-                    selected = selectedTab == tab ,
+                    selected = selected,
                     onClick = {
                         selectedTab = tab
                     },
                     icon = {
-                        Icon(painterResource(tab.resourceId), contentDescription = tab.label)
+                        Icon(
+                            painterResource(if (selected) tab.iconFilled else tab.icon),
+                            contentDescription = tab.label,
+                            tint = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
                     },
                     label = {
                         Text(text = tab.label)
