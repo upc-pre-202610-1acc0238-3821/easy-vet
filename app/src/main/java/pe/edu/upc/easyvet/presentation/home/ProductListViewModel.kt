@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import pe.edu.upc.easyvet.domain.repository.ProductRepository
 import pe.edu.upc.easyvet.presentation.home.UiState
+import java.net.UnknownHostException
 
 class ProductListViewModel(
     private val productRepository: ProductRepository
@@ -42,6 +43,10 @@ class ProductListViewModel(
                     it.copy(isLoading = false)
                 }
 
+            } catch (_: UnknownHostException) {
+                state.update {
+                    it.copy(isLoading = false, errorMessage = "No internet connection")
+                }
             } catch (e: Exception) {
                 state.update {
                     it.copy(isLoading = false, errorMessage = e.message ?: "An error occurred")
@@ -49,6 +54,12 @@ class ProductListViewModel(
             }
         }
 
+    }
+
+    fun clearError() {
+        state.update {
+            it.copy(errorMessage = null)
+        }
     }
 
     init {
