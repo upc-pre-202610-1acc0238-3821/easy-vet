@@ -2,6 +2,7 @@ package pe.edu.upc.easyvet.presentation.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,6 +14,7 @@ import pe.edu.upc.easyvet.domain.repository.ProductRepository
 import pe.edu.upc.easyvet.presentation.home.UiState
 import java.net.UnknownHostException
 
+@HiltViewModel  
 class ProductListViewModel(
     private val productRepository: ProductRepository
 ) : ViewModel() {
