@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import jakarta.inject.Singleton
 import pe.edu.upc.easyvet.data.remote.ProductService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,6 +21,7 @@ object RemoteModule {
     }
 
     @Provides
+    @Singleton
     fun provideRetrofit(@Named("url") url: String): Retrofit {
         return Retrofit.Builder()
             .baseUrl(url)
@@ -29,6 +31,7 @@ object RemoteModule {
     }
 
     @Provides
+    @Singleton
     fun provideProductService(retrofit: Retrofit): ProductService {
         return retrofit.create(ProductService::class.java)
     }

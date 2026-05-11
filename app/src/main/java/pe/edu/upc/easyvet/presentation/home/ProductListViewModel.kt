@@ -13,9 +13,10 @@ import kotlinx.coroutines.withContext
 import pe.edu.upc.easyvet.domain.repository.ProductRepository
 import pe.edu.upc.easyvet.presentation.home.UiState
 import java.net.UnknownHostException
+import javax.inject.Inject
 
-@HiltViewModel  
-class ProductListViewModel(
+@HiltViewModel
+class ProductListViewModel @Inject constructor(
     private val productRepository: ProductRepository
 ) : ViewModel() {
     val state = MutableStateFlow(UiState())

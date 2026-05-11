@@ -7,18 +7,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import pe.edu.upc.easyvet.di.RepositoryModule.provideProductRepository
 import pe.edu.upc.easyvet.domain.model.Product
 import pe.edu.upc.easyvet.presentation.home.ProductDetail
 import pe.edu.upc.easyvet.presentation.home.ProductList
 import pe.edu.upc.easyvet.presentation.home.ProductListViewModel
-import pe.edu.upc.easyvet.presentation.home.ProductListViewModelFactory
 
 
 @Composable
 fun HomeNavHost() {
-    val factory = ProductListViewModelFactory(provideProductRepository())
-    val viewModel: ProductListViewModel = viewModel(factory = factory)
+    val viewModel: ProductListViewModel = viewModel()
 
     val selectedProduct = remember {
         mutableStateOf<Product?>(null)
